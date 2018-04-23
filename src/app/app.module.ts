@@ -19,12 +19,19 @@ import { CreateResumeComponent } from './components/dashboard/create-resume/crea
 import { LoaderService } from './services/loader.service';
 import { SharedService } from './services/shared.service';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
 import {
   ForgotFlowGuard, DashboardFlowGuard,
   CreateResumeFlowGuard,
   LoginFlowGuard, ProfileFlowGuard,
-  RegisterFlowGuard, ThemeProfileFlowGuard
+  RegisterFlowGuard, ThemeProfileFlowGuard,
 } from './guards/flow-gaurd';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -45,18 +52,23 @@ import {
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [
     LoaderService,
     SharedService,
+    AuthService,
     ForgotFlowGuard,
     DashboardFlowGuard,
     CreateResumeFlowGuard,
     LoginFlowGuard,
     ProfileFlowGuard,
     RegisterFlowGuard,
-    ThemeProfileFlowGuard
+    ThemeProfileFlowGuard,
 
   ],
   bootstrap: [AppComponent]

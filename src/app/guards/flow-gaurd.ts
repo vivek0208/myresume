@@ -11,14 +11,12 @@ export class LoginFlowGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        // if (this.sharedService.isUserAuthenticated()) {
-        //     const userId = this.sharedService.
-        //     getDataFromStorage(STORAGE_KEYS.SESSION)['jellyfishId'];
-        //     this.router.navigate(['/ds/' + userId + '/dashboard']);
-        //     return false;
-        // } else {
+        if (this.sharedService.isUserAuthenticated()) {
+            this.router.navigate(['dashboard']);
+            return false;
+        } else {
             return true;
-        // }
+        }
     }
 }
 
@@ -29,14 +27,12 @@ export class RegisterFlowGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        // if (this.sharedService.isUserAuthenticated()) {
-        //     const userId = this.sharedService.
-        //     getDataFromStorage(STORAGE_KEYS.SESSION)['jellyfishId'];
-        //     this.router.navigate(['/ds/' + userId + '/dashboard']);
-        //     return false;
-        // } else {
+        if (this.sharedService.isUserAuthenticated()) {
+            this.router.navigate(['dashboard']);
+            return false;
+        } else {
             return true;
-        // }
+        }
     }
 }
 @Injectable()
@@ -46,14 +42,12 @@ export class ForgotFlowGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        // if (this.sharedService.isUserAuthenticated()) {
-        //     const userId = this.sharedService.
-        //     getDataFromStorage(STORAGE_KEYS.SESSION)['jellyfishId'];
-        //     this.router.navigate(['/ds/' + userId + '/dashboard']);
-        //     return false;
-        // } else {
+        if (this.sharedService.isUserAuthenticated()) {
+            this.router.navigate(['dashboard']);
+            return false;
+        } else {
             return true;
-        // }
+        }
     }
 }
 // Reset Password Flow Gaurd
@@ -64,13 +58,11 @@ export class ResetPasswordFlowGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        return true;
-        // if (this.sharedService.isUserAuthenticated()) {
-        //     return true;
-        // } else {
-        //     this.router.navigate(['/login']);
-        //     return false;
-        // }
+        if (this.sharedService.isUserAuthenticated()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -84,7 +76,7 @@ export class ProfileFlowGuard implements CanActivate {
         if (this.sharedService.isUserAuthenticated()) {
             return true;
         } else {
-         this.router.navigate(['/login']);
+         this.router.navigate(['login']);
             return false;
         }
     }
@@ -100,7 +92,7 @@ export class ThemeProfileFlowGuard implements CanActivate {
         if (this.sharedService.isUserAuthenticated()) {
             return true;
         } else {
-            this.router.navigate(['/login']);
+            this.router.navigate(['login']);
             return false;
         }
     }
@@ -116,7 +108,7 @@ export class CreateResumeFlowGuard implements CanActivate {
         if (this.sharedService.isUserAuthenticated()) {
             return true;
         } else {
-            this.router.navigate(['/login']);
+            this.router.navigate(['login']);
             return false;
         }
     }
@@ -129,12 +121,12 @@ export class DashboardFlowGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (this.sharedService.isUserAuthenticated()) {
+         if (this.sharedService.isUserAuthenticated()) {
             return true;
-        } else {
-            this.router.navigate(['/login']);
-            return false;
-        }
+         } else {
+             this.router.navigate(['login']);
+             return false;
+         }
     }
 }
 
