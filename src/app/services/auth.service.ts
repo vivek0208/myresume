@@ -77,4 +77,8 @@ export class AuthService {
       }, err => reject(err));
   });
   }
+
+  getActiveUser(){
+    return firebase.auth().currentUser;
+}
 }

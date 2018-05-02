@@ -30,7 +30,7 @@ import {
   LoginFlowGuard, ProfileFlowGuard,
   RegisterFlowGuard, ThemeProfileFlowGuard,
 } from './guards/flow-gaurd';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 
 @NgModule({
@@ -53,6 +53,7 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

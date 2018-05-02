@@ -139,6 +139,7 @@ iframe {
   font-family: Poppins-Regular;
   font-size: 14px;
   line-height: 1.5;
+  z-index: 100;
   color: #666666;
 }
 
@@ -187,6 +188,12 @@ iframe {
   overflow: hidden;
 }
 
+.wrap-signup {
+  width: 600px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
 /*------------------------------------------------------------------
 [ Form ]*/
